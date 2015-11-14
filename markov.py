@@ -19,10 +19,10 @@ api = tweepy.API(auth)
 
 # Creates the post and logs to a file
 def generate_post():
-    with open('txt/picard.txt') as f:
+    with open('mashers.txt') as f:
         text = f.read()
 
-    # Decides if it's late enough for Picard to be drunk
+    # Decides if it's late enough for an evening message
     t = datetime.datetime.now().time()
     start_t = datetime.time(0, 0, 0)
     end_t = datetime.time(2, 0, 0)
@@ -35,7 +35,7 @@ def generate_post():
 
     # Create a sentence limited to 140 chars
     if gen_state_size == 1:
-        output_text = text_model.make_short_sentence(127) + " #DrunkPicard"
+        output_text = text_model.make_short_sentence(127) + " #hashtag"
     else:
         output_text = text_model.make_short_sentence(140)
 
