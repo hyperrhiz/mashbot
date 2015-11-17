@@ -19,34 +19,18 @@ api = tweepy.API(auth)
 
 # Creates the post and logs to a file
 def generate_post():
-    with open('mashers.txt') as f:
+    with open('corpus.txt') as f:
         text = f.read()
 
-    # Decides if it's late enough for an evening message
-    t = datetime.datetime.now().time()
-    start_t = datetime.time(0, 0, 0)
-    end_t = datetime.time(2, 0, 0)
-    if start_t <= t <= end_t:
-        gen_state_size = 1
-        text_model = markovify.Text(text, state_size=gen_state_size)
-    else:
-        gen_state_size = random.randrange(2, 4)
-        text_model = markovify.Text(text, state_size=gen_state_size)
+    text_model = markovify.Text(text, state_size=1)
+    output_text = text_model.make_short_sentence(140) # was 140
 
-    # Create a sentence limited to 140 chars
-    if gen_state_size == 1:
-        output_text = text_model.make_short_sentence(127) + " #hashtag"
-    else:
-        output_text = text_model.make_short_sentence(140)
-
-    # Write the status to a file, along with state size
+    # Write the status to a file, for debugging
     with open('history.txt', 'a') as f:
         f.write(output_text + '\n')
-        f.write('State size of: ')
-        f.write(str(gen_state_size) + '\n\n')
 
     return output_text
-
+#generate_post()
 
 # Post the status to Twitter
 api.update_status(status=generate_post())
