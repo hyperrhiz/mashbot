@@ -58,7 +58,7 @@
 	date_default_timezone_set('America/New_York');
 	
 	// Require TwitterOAuth files. (Downloadable from : https://github.com/abraham/twitteroauth)
-	require_once("src/TwitterOAuth.php");
+	require_once("twitteroauth/twitteroauth.php");
 	
 	// Function to authenticate app with Twitter.
 	function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret) {
@@ -77,18 +77,18 @@
 		$include_rts         = false,           // Include retweets. (Default : false)
 		$twitter_wrap_open   = '<div>',
 		$twitter_wrap_close  = '</div>',
-		$tweet_wrap_open     = '<hr><h1>The title you want</h1><p class="home-tweet-tweet">', // your tweet header
+		$tweet_wrap_open     = '<hr><h1>Title</h1><p class="home-tweet-tweet">', // your tweet header
 		$meta_wrap_open      = '</p><p><span class="home-tweet-date">',
-		$meta_wrap_close     = '</span> . Bot Name . <a href="http://twitter.com/botname">@botname</a>', //replace with twitter handle
+		$meta_wrap_close     = '</span> . Botname . <a href="http://twitter.com/botname">@botname</a>', //replace with twitter handle
 		$tweet_wrap_close    = '</p>',
 		$date_format         = 'g:i A M jS',    // Date formatting. (http://php.net/manual/en/function.date.php)
 		$twitter_style_dates = true){           // Twitter style days. [about an hour ago] (Default : true)
 			
 		// Twitter keys (You'll need to visit https://dev.twitter.com and register to get these.
-		$consumerkey         = "mashbotssecretkey";
-		$consumersecret      = "mashbotssecretsecret";
-		$accesstoken         = "mashbotsaccesstoken";
-		$accesstokensecret   = "mashbotsaccesstokensecret";
+		$consumerkey         = "xxx";
+		$consumersecret      = "xxx";
+		$accesstoken         = "xxx";
+		$accesstokensecret   = "xxx";
 		
 		// Seconds to cache feed (Default : 3 minutes).
 		$cachetime           = 60*3;
